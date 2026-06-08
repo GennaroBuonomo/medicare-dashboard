@@ -1,0 +1,54 @@
+{
+  "patients": [
+    {
+      "id": "PT-1042",
+      "name": "Antonio De Luca",
+      "age": 78,
+      "department": "Cardiologia",
+      "riskLevel": "high",
+      "oremDeficit": "Incapacità di auto-somministrazione terapeutica",
+      "roperScore": 5,
+      "lastUpdate": "14:30"
+    },
+    {
+      "id": "PT-1043",
+      "name": "Giulia Bianchi",
+      "age": 45,
+      "department": "Chirurgia Generale",
+      "riskLevel": "low",
+      "oremDeficit": "Nessuno. Paziente autonoma.",
+      "roperScore": 11,
+      "lastUpdate": "15:45"
+    },
+    {
+      "id": "PT-1044",
+      "name": "Marco Romano",
+      "age": 62,
+      "department": "Ortopedia",
+      "riskLevel": "medium",
+      "oremDeficit": "Limitazione motoria. Necessita supporto per igiene.",
+      "roperScore": 8,
+      "lastUpdate": "16:00"
+    },
+    {
+      "id": "PT-1045",
+      "name": "Elena Ricci",
+      "age": 82,
+      "department": "Neurologia",
+      "riskLevel": "high",
+      "oremDeficit": "Deficit cognitivo e rischio cadute elevato.",
+      "roperScore": 4,
+      "lastUpdate": "16:15"
+    },
+    {
+      "id": "PT-1046",
+      "name": "Luigi Esposito",
+      "age": 55,
+      "department": "Cardiologia",
+      "riskLevel": "medium",
+      "oremDeficit": "Necessita monitoraggio parametri vitali post-operatorio.",
+      "roperScore": 9,
+      "lastUpdate": "16:20"
+    }
+  ]
+}
