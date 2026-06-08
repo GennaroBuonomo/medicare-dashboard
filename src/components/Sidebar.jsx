@@ -10,8 +10,8 @@ export default function Sidebar() {
 
       <nav className="sidebar-nav">
         <p className="nav-item active">📊 Dashboard</p>
-        <p className="nav-item">🛏️ Pazienti (Roper)</p>
-        <p className="nav-item">⚠️ Deficit Cura (Orem)</p>
+        <p className="nav-item">🛏️ Pazienti </p>
+        <p className="nav-item">⚠️ Deficit Cura</p>
       </nav>
     </aside>
   );

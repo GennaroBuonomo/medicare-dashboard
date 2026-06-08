@@ -13,7 +13,7 @@ export default function PatientsTable({ patients }) {
               <th>Nome</th>
               <th>Reparto</th>
               <th>Livello Rischio</th>
-              <th>Score (Roper)</th>
+              <th>Score</th>
               <th>Aggiornamento</th>
             </tr>
           </thead>
