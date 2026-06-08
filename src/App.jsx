@@ -65,6 +65,52 @@ function App() {
           </div>
 
         </div>
+        {/* LISTA PAZIENTI (Sotto le card) */}
+        <h2 style={{ marginTop: '40px', marginBottom: '16px', color: '#1e293b', fontSize: '20px' }}>
+          Dettaglio Pazienti
+        </h2>
+        
+        <div className="table-container">
+          <table className="patients-table">
+            <thead>
+              <tr>
+                <th>ID Paziente</th>
+                <th>Nome</th>
+                <th>Reparto</th>
+                <th>Livello Rischio</th>
+                <th>Score (Roper)</th>
+                <th>Aggiornamento</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* Il magico .map() di React per generare le righe dal nostro file JSON */}
+              {data.patients.map((patient) => (
+                <tr key={patient.id}>
+                  <td style={{ fontWeight: '600', color: '#2563eb' }}>{patient.id}</td>
+                  <td style={{ color: '#1e293b', fontWeight: '500' }}>{patient.name}</td>
+                  <td style={{ color: '#64748b' }}>{patient.department}</td>
+                  <td>
+                    {/* Logica condizionale per assegnare la classe del badge corretto */}
+                    <span className={`badge ${
+                      patient.riskLevel === 'high' ? 'badge-high' : 
+                      patient.riskLevel === 'medium' ? 'badge-medium' : 'badge-low'
+                    }`}>
+                      {patient.riskLevel === 'high' ? 'Critico' : 
+                       patient.riskLevel === 'medium' ? 'Attenzione' : 'Stabile'}
+                    </span>
+                  </td>
+                  <td>
+                    {/* Evidenziamo in rosso se lo score di Roper è troppo basso (< 6) */}
+                    <strong style={{ color: patient.roperScore < 6 ? '#ef4444' : '#1e293b' }}>
+                      {patient.roperScore} / 12
+                    </strong>
+                  </td>
+                  <td style={{ color: '#64748b' }}>{patient.lastUpdate}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
            </main>
 
     </div>

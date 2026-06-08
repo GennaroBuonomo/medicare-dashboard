@@ -45,3 +45,51 @@ body {
  padding: 32px;
  overflow-y: auto;
 }
+
+/* STILI PER LA TABELLA PAZIENTI */
+.table-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  margin-top: 32px;
+  overflow: hidden; /* Mantiene i bordi arrotondati e taglia fuori gli spigoli della tabella */
+}
+
+.patients-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.patients-table th, 
+.patients-table td {
+  padding: 16px 24px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.patients-table th {
+  background-color: #f8fafc;
+  color: #64748b;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.patients-table tr:last-child td {
+  border-bottom: none; /* Rimuove l'ultimo bordo in basso per una pulizia visiva perfetta */
+}
+
+/* BADGES DINAMICI PER IL RISCHIO */
+.badge {
+  padding: 6px 12px;
+  border-radius: 999px; /* Crea l'effetto "pillola" */
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-low { background-color: #d1fae5; color: #065f46; } /* Verde scuro su sfondo verde pastello */
+.badge-medium { background-color: #fef3c7; color: #92400e; } /* Arancione scuro su giallo pastello */
+.badge-high { background-color: #fee2e2; color: #991b1b; } /* Rosso scuro su rosso pastello */
