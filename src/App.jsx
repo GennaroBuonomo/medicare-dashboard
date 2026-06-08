@@ -1,7 +1,18 @@
+import { useState } from 'react';
 import data from './data.json';
 import './App.css'
 
 function App() {
+
+  // La "memoria" che conserva le lettere che digitiamo nella barra
+  const [ searchTerm, setSearchTerm ] = useState(''); // <-- QUI C'ERA LA VIRGOLA! Ora c'è il punto e virgola
+
+  //Creiamo una lista dinamica in base a cosa c'è scritto nello stato
+  const filteredPatients = data.patients.filter(patient => 
+    patient.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    patient.id.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   //Calcoliamo i dati in tempo reale dal JSON
   const totalPatients = data.patients.length;
   const criticalPatients = data.patients.filter(p => p.riskLevel === 'high').length;
@@ -10,13 +21,13 @@ function App() {
   return (
     <div className="dashboard-layout">
 
-         {/* MENU LATERARE */}
+         {/* MENU LATERALE */}
       <aside className="sidebar">
         <h2 style={{ color: '#2563eb', marginBottom: '4px'}}>
-          MeciCare Pro
+          MediCare Pro
         </h2>
         <p style={{ color: '#64748b', fontSize: '14px', marginBottom: '32px' }}>
-          Clinical Risk Menagment
+          Clinical Risk Management
         </p>
 
         <nav style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontWeight: '500' }}>
@@ -25,24 +36,40 @@ function App() {
           <p style={{ color: '#64748b', cursor: 'pointer' }}>⚠️ Deficit Cura (Orem)</p>
         </nav>
       </aside>
+
          {/* BARRA SUPERIORE */}
          <header className="top-header">
-          <div style={{ padding: '8px 16px', backgroundColor: '#f4f7fb', borderRadius: '8px', color: '#64748b', width: '300px' }}>
-            🔍 Cerca Paziente...
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <input 
+          type="text" 
+          placeholder="🔍 Cerca ID o Nome Paziente..." 
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          style={{ 
+            padding: '10px 16px', 
+            backgroundColor: '#f4f7fb', 
+            border: '1px solid #e2e8f0',
+            borderRadius: '8px', 
+            color: '#1e293b', 
+            width: '320px',
+            outline: 'none',
+            fontSize: '14px'
+          }} 
+        />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: '#2563eb', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>
             DR
           </div>
           <p><strong>Dott.ssa. Maria D'Anna</strong></p>
         </div>
-         </header>
+      </header>
+
            {/* AREA DATI CENTRALE */}
            <main className="main-content">
             <h1>Monitoraggio Reparti</h1>
             <p style={{ color: '#64748b', marginTop: '8px' }}>
-              Panoramica generale sui livelli di riscio e assistenza in tempo reale.
+              Panoramica generale sui livelli di rischio e assistenza in tempo reale.
             </p>
+
             {/* LA GRIGLIA DELLE CARD (KPI) */}
         <div style={{ display: 'flex', gap: '24px', marginTop: '32px' }}>
           
@@ -65,6 +92,7 @@ function App() {
           </div>
 
         </div>
+
         {/* LISTA PAZIENTI (Sotto le card) */}
         <h2 style={{ marginTop: '40px', marginBottom: '16px', color: '#1e293b', fontSize: '20px' }}>
           Dettaglio Pazienti
@@ -83,14 +111,12 @@ function App() {
               </tr>
             </thead>
             <tbody>
-              {/* Il magico .map() di React per generare le righe dal nostro file JSON */}
-              {data.patients.map((patient) => (
+              {filteredPatients.map((patient) => (
                 <tr key={patient.id}>
                   <td style={{ fontWeight: '600', color: '#2563eb' }}>{patient.id}</td>
                   <td style={{ color: '#1e293b', fontWeight: '500' }}>{patient.name}</td>
                   <td style={{ color: '#64748b' }}>{patient.department}</td>
                   <td>
-                    {/* Logica condizionale per assegnare la classe del badge corretto */}
                     <span className={`badge ${
                       patient.riskLevel === 'high' ? 'badge-high' : 
                       patient.riskLevel === 'medium' ? 'badge-medium' : 'badge-low'
@@ -100,7 +126,6 @@ function App() {
                     </span>
                   </td>
                   <td>
-                    {/* Evidenziamo in rosso se lo score di Roper è troppo basso (< 6) */}
                     <strong style={{ color: patient.roperScore < 6 ? '#ef4444' : '#1e293b' }}>
                       {patient.roperScore} / 12
                     </strong>
@@ -117,4 +142,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
