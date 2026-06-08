@@ -28,7 +28,7 @@ function App() {
           <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: '#2563eb', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>
             DR
           </div>
-          <p><strong>Dott.ssa. D'Anna</strong></p>
+          <p><strong>Dott.ssa. Maria D'Anna</strong></p>
         </div>
          </header>
            {/* AREA DATI CENTRALE */}
@@ -38,7 +38,7 @@ function App() {
               Panoramica generale sui livelli di riscio e assistenza in tempo reale.
             </p>
            </main>
-           
+
     </div>
   );
 }
