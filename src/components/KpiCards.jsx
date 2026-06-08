@@ -1,6 +1,6 @@
 export default function KpiCards({ total, critical, stable }) {
   return (
-    <div style={{ display: 'flex', gap: '24px', marginTop: '32px' }}>
+    <div className="kpi-container">
       
       <div className="kpi-card border-blue">
         <h3 style={{ color: '#64748b', fontSize: '14px', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Totale Ricoveri</h3>

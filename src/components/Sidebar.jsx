@@ -8,7 +8,7 @@ export default function Sidebar() {
         Clinical Risk Management
       </p>
 
-      <nav style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontWeight: '500' }}>
+      <nav className="sidebar-nav">
         <p className="nav-item active">📊 Dashboard</p>
         <p className="nav-item">🛏️ Pazienti (Roper)</p>
         <p className="nav-item">⚠️ Deficit Cura (Orem)</p>

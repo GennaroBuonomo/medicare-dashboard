@@ -144,3 +144,102 @@ body {
 .patients-table tbody tr:hover {
   background-color: #f8fafc; /* Sfondo grigio chiarissimo al passaggio del mouse */
 }
+
+/* =========================================
+   CLASSI BASE (Per sostituire gli stili inline)
+========================================= */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-weight: 500;
+}
+
+.header-search {
+  padding: 10px 16px;
+  background-color: #f4f7fb;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  color: #1e293b;
+  width: 320px;
+  outline: none;
+  font-size: 14px;
+}
+
+.kpi-container {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+/* =========================================
+   📱 RESPONSIVE DESIGN (MOBILE & TABLET)
+========================================= */
+
+@media (max-width: 768px) {
+  /* 1. Riorganizziamo la griglia principale a colonna singola */
+  .dashboard-layout {
+    grid-template-columns: 1fr; 
+    grid-template-rows: 70px 1fr 70px; /* Header in alto, Main al centro, Menu in basso */
+    grid-template-areas: 
+      "header"
+      "main"
+      "sidebar";
+  }
+
+  /* 2. Trasformiamo la Sidebar in una vera "Bottom Nav" da App */
+  .sidebar {
+    border-right: none;
+    border-top: 1px solid #e2e8f0;
+    padding: 12px;
+    z-index: 100;
+  }
+
+  .sidebar h2, 
+  .sidebar > p {
+    display: none; 
+  }
+
+  /* Ora modifichiamo la classe senza forzature */
+  .sidebar-nav {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* 3. L'Header (Barra in alto) */
+  .top-header {
+    padding: 0 16px;
+  }
+  
+  .header-search {
+    width: 140px; 
+    font-size: 12px;
+  }
+
+  .top-header > div > p {
+    display: none;
+  }
+
+  /* 4. Le 3 Card KPI in colonna */
+  .kpi-container {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .main-content {
+    padding: 16px; 
+  }
+
+  /* 5. Tabella scorrevole orizzontalmente */
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; 
+  }
+  
+  .patients-table th, 
+  .patients-table td {
+    white-space: nowrap; 
+  }
+}
