@@ -31,9 +31,9 @@ function App() {
         </p>
 
         <nav style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontWeight: '500' }}>
-          <p style={{ color: '#2563eb', cursor: 'pointer' }}>📊 Dashboard</p>
-          <p style={{ color: '#64748b', cursor: 'pointer' }}>🛏️ Pazienti (Roper)</p>
-          <p style={{ color: '#64748b', cursor: 'pointer' }}>⚠️ Deficit Cura (Orem)</p>
+          <p className="nav-item active">📊 Dashboard</p>
+          <p className="nav-item">🛏️ Pazienti (Roper)</p>
+          <p className="nav-item">⚠️ Deficit Cura (Orem)</p>
         </nav>
       </aside>
 
@@ -73,20 +73,17 @@ function App() {
             {/* LA GRIGLIA DELLE CARD (KPI) */}
         <div style={{ display: 'flex', gap: '24px', marginTop: '32px' }}>
           
-          {/* Card 1: Totale Pazienti (Blu) */}
-          <div style={{ flex: 1, backgroundColor: '#ffffff', padding: '24px', borderRadius: '12px', border: '1px solid #e2e8f0', borderLeft: '4px solid #2563eb' }}>
+          <div className="kpi-card border-blue">
             <h3 style={{ color: '#64748b', fontSize: '14px', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Totale Ricoveri</h3>
             <p style={{ fontSize: '36px', fontWeight: 'bold', color: '#1e293b' }}>{totalPatients}</p>
           </div>
           
-          {/* Card 2: Pazienti Critici (Rosso) */}
-          <div style={{ flex: 1, backgroundColor: '#ffffff', padding: '24px', borderRadius: '12px', border: '1px solid #e2e8f0', borderLeft: '4px solid #ef4444' }}>
+          <div className="kpi-card border-red">
             <h3 style={{ color: '#64748b', fontSize: '14px', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Allarmi (Alto Rischio)</h3>
             <p style={{ fontSize: '36px', fontWeight: 'bold', color: '#ef4444' }}>{criticalPatients}</p>
           </div>
 
-          {/* Card 3: Pazienti Stabili (Verde) */}
-          <div style={{ flex: 1, backgroundColor: '#ffffff', padding: '24px', borderRadius: '12px', border: '1px solid #e2e8f0', borderLeft: '4px solid #10b981' }}>
+          <div className="kpi-card border-green">
             <h3 style={{ color: '#64748b', fontSize: '14px', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Pazienti Stabili</h3>
             <p style={{ fontSize: '36px', fontWeight: 'bold', color: '#1e293b' }}>{stablePatients}</p>
           </div>

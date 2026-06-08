@@ -93,3 +93,54 @@ body {
 .badge-low { background-color: #d1fae5; color: #065f46; } /* Verde scuro su sfondo verde pastello */
 .badge-medium { background-color: #fef3c7; color: #92400e; } /* Arancione scuro su giallo pastello */
 .badge-high { background-color: #fee2e2; color: #991b1b; } /* Rosso scuro su rosso pastello */
+
+/* 1. Effetto Hover sulle Card KPI */
+.kpi-card {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  /* Diciamo al browser di animare lo spostamento e l'ombra in 0.3 secondi */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.kpi-card:hover {
+  transform: translateY(-6px); /* Solleva la card verso l'alto di 6px */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Crea l'ombra sotto */
+}
+
+/* Classi di supporto per i bordi colorati delle card */
+.border-blue { border-left: 4px solid #2563eb; }
+.border-red { border-left: 4px solid #ef4444; }
+.border-green { border-left: 4px solid #10b981; }
+
+
+/* 2. Effetto Hover sul Menu Laterale */
+.nav-item {
+  color: #64748b;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-item:hover {
+  color: #2563eb; /* Diventa blu al passaggio */
+  transform: translateX(6px); /* Scivola a destra di 6px */
+}
+
+/* Classe per la pagina attiva */
+.nav-item.active {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+
+/* 3. Effetto Hover sulle Righe della Tabella */
+.patients-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.patients-table tbody tr:hover {
+  background-color: #f8fafc; /* Sfondo grigio chiarissimo al passaggio del mouse */
+}
