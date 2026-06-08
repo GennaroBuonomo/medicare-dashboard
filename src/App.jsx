@@ -32,9 +32,13 @@ function App() {
         </div>
          </header>
            {/* AREA DATI CENTRALE */}
-           <div className="main-content">
-            
-           </div>
+           <main className="main-content">
+            <h1>Monitoraggio Reparti</h1>
+            <p style={{ color: '#64748b', marginTop: '8px' }}>
+              Panoramica generale sui livelli di riscio e assistenza in tempo reale.
+            </p>
+           </main>
+           
     </div>
   );
 }

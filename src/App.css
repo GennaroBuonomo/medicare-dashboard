@@ -6,4 +6,20 @@
   box-sizing: border-box;
 }
 
+body{
+  font-family: 'Inter', sans-serif;
+  background-color: #f4f7fb;
+  color: #1e293b;
+}
 
+/* GRIGLIA MASTER */
+.dashboard-layout{
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  grid-template-rows: 80px 1fr;
+  grid-template-areas: 
+   "sidebar header"
+   "sidebar main";
+   height: 100vh;
+   overflow: hidden;
+}
