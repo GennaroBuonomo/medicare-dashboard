@@ -7,6 +7,7 @@ import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import KpiCards from './components/KpiCards';
 import PatientsTable from './components/PatientsTable';
+import RiskChart from './components/RiskChart';
 
 function App() {
   const [ searchTerm, setSearchTerm ] = useState('');
@@ -42,6 +43,8 @@ function App() {
           critical={criticalPatients} 
           stable={stablePatients} 
         />
+
+        <RiskChart patients={filteredPatients} />
 
         <PatientsTable 
           patients={filteredPatients} 
