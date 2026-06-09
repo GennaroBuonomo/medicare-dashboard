@@ -2,25 +2,26 @@ import { useState } from 'react';
 import data from './data.json';
 import './App.css';
 
-// Importiamo i nostri nuovi moduli
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import KpiCards from './components/KpiCards';
 import PatientsTable from './components/PatientsTable';
 import RiskChart from './components/RiskChart';
+import Modal from './components/Modal';
 
 function App() {
   const [ searchTerm, setSearchTerm ] = useState('');
+  const [ isModalOpen, setIsModalOpen ] = useState(false);
+  const [ patientsList, setPatientsList ] = useState(data.patients);
 
-  // Elaborazione Dati
-  const filteredPatients = data.patients.filter(patient => 
+  const filteredPatients = patientsList.filter(patient => 
     patient.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
     patient.id.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const totalPatients = data.patients.length;
-  const criticalPatients = data.patients.filter(p => p.riskLevel === 'high').length;
-  const stablePatients = data.patients.filter(p => p.riskLevel === 'low').length;
+  const totalPatients = patientsList.length;
+  const criticalPatients = patientsList.filter(p => p.riskLevel === 'high').length;
+  const stablePatients = patientsList.filter(p => p.riskLevel === 'low').length;
 
   return (
     <div className="dashboard-layout">
@@ -33,10 +34,23 @@ function App() {
       />
 
       <main className="main-content">
-        <h1>Monitoraggio Reparti</h1>
-        <p style={{ color: '#64748b', marginTop: '8px' }}>
-          Panoramica generale sui livelli di rischio e assistenza in tempo reale.
-        </p>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div>
+            <h1>Monitoraggio Reparti</h1>
+            <p style={{ color: '#64748b', marginTop: '8px' }}>
+              Panoramica generale sui livelli di rischio e assistenza in tempo reale.
+            </p>
+          </div>
+          <button 
+           onClick={() => setIsModalOpen(true)}
+          style={{
+            backgroundColor: '#2563eb', color: 'white', border: 'none', 
+            padding: '12px 24px', borderRadius: '8px', fontWeight: 'bold', 
+            cursor: 'pointer', boxShadow: '0 4px 6px -1px rgba(37, 99, 235, 0.2)'
+          }}>
+            + Nuovo Ricovero
+          </button>
+        </div>
 
         <KpiCards 
           total={totalPatients} 
@@ -48,6 +62,13 @@ function App() {
 
         <PatientsTable 
           patients={filteredPatients} 
+        />
+
+        {/*  MODALE */}
+        <Modal 
+          isOpen={isModalOpen} 
+          onClose={() => setIsModalOpen(false)} 
+          onSave={(newPatient) => setPatientsList([newPatient, ...patientsList])} 
         />
       </main>
 
